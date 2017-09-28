@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 
 import firebase from 'firebase';
 
+
 firebase.initializeApp({
   apiKey: "AIzaSyAw511SdhAZc1_6D-kPTAHGSpx1XgzwKPM",
   authDomain: "marketplace-aed36.firebaseapp.com",
