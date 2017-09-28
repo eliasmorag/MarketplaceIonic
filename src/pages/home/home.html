@@ -1,12 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Marketplace
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <button ion-button block (click)="login()">Login with Facebook</button>
+  <button ion-button full (click)="loginWithFB()">Login with Facebook</button>
+
+  <ion-card *ngIf="userData">
+    <ion-card-header>{{userData.username}}</ion-card-header>
+    <img [src]="userData.picture">
+    <ion-card-content>
+      <p>Email: {{userData.email}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
