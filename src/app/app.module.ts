@@ -6,39 +6,51 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Login } from '../pages/login/login';
 import { Facebook } from '@ionic-native/facebook';
 
-import firebase from 'firebase';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 
-firebase.initializeApp({
-  apiKey: "AIzaSyAw511SdhAZc1_6D-kPTAHGSpx1XgzwKPM",
-  authDomain: "marketplace-aed36.firebaseapp.com",
-  databaseURL: "https://marketplace-aed36.firebaseio.com",
-  projectId: "marketplace-aed36",
-  storageBucket: "marketplace-aed36.appspot.com",
-  messagingSenderId: "150581034664"
-});
+export const firebaseConfig = {
+  apiKey: "AIzaSyBTGY08NdYQq6BuT2JgjuYo4QTnAYm8IJ0",
+  authDomain: "productos-angular.firebaseapp.com",
+  databaseURL: "https://productos-angular.firebaseio.com",
+  projectId: "productos-angular",
+  storageBucket: "productos-angular.appspot.com",
+  messagingSenderId: "837986261668"
+  }
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    Login,
+    
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    Login
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
+    FirebaseProvider,
   ]
 })
 export class AppModule {}

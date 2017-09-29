@@ -1,14 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Marketplace
+      Marketplace a
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full (click)="loginWithFB()">Login with Facebook</button>
-
+    <ion-grid>
+        <ion-row *ngFor="let producto of productos" >
+          <ion-col width-50 >
+            {{producto.name}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
   <ion-card *ngIf="userData">
     <ion-card-header>{{userData.username}}</ion-card-header>
     <img [src]="userData.picture">
