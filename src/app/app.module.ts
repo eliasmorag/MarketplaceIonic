@@ -10,6 +10,7 @@ import { Login } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { CartPage } from '../pages/cart/cart'
 import { TabsPage } from '../pages/tabs/tabs'
+import { DetailPage } from '../pages/detail/detail'
 import { Facebook } from '@ionic-native/facebook';
 
 import { FirebaseProvider } from '../providers/firebase/firebase';
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     Login,
     ProfilePage,
     CartPage,
-    TabsPage
+    TabsPage,
+    DetailPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ export const firebaseConfig = {
     Login,
     ProfilePage,
     CartPage,
-    TabsPage
+    TabsPage,
+    DetailPage
   ],
   providers: [
     StatusBar,

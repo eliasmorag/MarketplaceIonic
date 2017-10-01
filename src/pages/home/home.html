@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar color="light-red">
+  <ion-navbar color="light-red" >
     <ion-title>
-      {{userData.username}}
+      <img class="principal" src="assets/img/market-only-logo.jpg"/>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -18,7 +18,7 @@
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
         <ion-col col-6 col-md-4 col-xl-3 *ngFor="let producto of productos">
-          <div class="image-container" [style.background-image]="'url(assets/img/product-default-300x300.png)'">
+          <div class="image-container" [style.background-image]="'url(assets/img/product-default-300x300.png)'" (click)="goDetail(producto)">
             {{producto.name}}
             <br>
             {{producto.descripcion}}
