@@ -10,6 +10,7 @@ import { NavController ,NavParams} from 'ionic-angular';
 export class HomePage {
   userData = null;
   productos:any;
+  galleryType = 'regular';
 
   constructor(private firebaseService:FirebaseProvider,public navCtrl: NavController,public navParams: NavParams) {
     this.userData = {email: navParams.get('mail'), picture: navParams.get('foto'), username: navParams.get('nombre')};
