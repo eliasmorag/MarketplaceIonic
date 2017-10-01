@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { HomePage } from '../home/home'
+import { TabsPage } from '../tabs/tabs'
 
 @Component({
   selector: 'page-login',
@@ -20,7 +21,7 @@ export class Login {
         this.userData = {email: profile['email'], picture: profile['picture_large']['data']['url'], username: profile['name']};
       })
     });
-    this.navCtrl.setRoot(HomePage,{
+    this.navCtrl.setRoot(TabsPage,{
       mail:this.userData.email,
       foto:this.userData.picture,
       nombre:this.userData.username

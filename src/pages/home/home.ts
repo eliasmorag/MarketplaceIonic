@@ -13,7 +13,7 @@ export class HomePage {
   galleryType = 'regular';
 
   constructor(private firebaseService:FirebaseProvider,public navCtrl: NavController,public navParams: NavParams) {
-    this.userData = {email: navParams.get('mail'), picture: navParams.get('foto'), username: navParams.get('nombre')};
+    this.userData = {email: navParams.get('email'), picture: navParams.get('picture'), username: navParams.get('username')};
     this.firebaseService.getProductos().subscribe(productos => {
       this.productos = productos;
     });

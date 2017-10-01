@@ -7,6 +7,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
+import { CartPage } from '../pages/cart/cart'
+import { TabsPage } from '../pages/tabs/tabs'
 import { Facebook } from '@ionic-native/facebook';
 
 import { FirebaseProvider } from '../providers/firebase/firebase';
@@ -30,7 +33,9 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     Login,
-    
+    ProfilePage,
+    CartPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    Login
+    Login,
+    ProfilePage,
+    CartPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
