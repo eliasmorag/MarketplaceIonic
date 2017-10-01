@@ -1,12 +1,21 @@
-<ion-header>
-    <ion-navbar>
+<ion-header class="bar">
+    <ion-navbar color="light-red">
       <ion-title>
         Marketplace
       </ion-title>
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
-    <button ion-button full (click)="loginWithFB()">Login with Facebook</button>
+  <ion-content class="bg-style" scroll="false" padding>
+    <div>
+      <div class="item item-image" style="border:none;margin-top:50px;">
+          <img src="assets/img/marketplace-logo.jpg"/>
+      </div>
+
+      <button ion-button full icon-left (click)="loginWithFB()">
+        <ion-icon name="logo-facebook"></ion-icon>
+        connect with Facebook
+      </button>
+    </div>
   </ion-content>
   
