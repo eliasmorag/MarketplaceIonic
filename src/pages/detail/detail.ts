@@ -15,6 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
   producto:any;
+  cantidad:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.producto=this.navParams.get('pro');
   }

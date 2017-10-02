@@ -14,22 +14,29 @@
 
 
 <ion-content padding>
-
-      <img src="assets/img/product-default-300x300.png" width="100%" height="auto" style="width: 100%; height: auto;">
-      <div class="button-bar">
-          <button class="button button-positive button-clear button-block  icon ion-android-cart"></button>
-          <button class="button button-assertive button-clear button-block  icon ion-android-favorite-outline"></button>
-          <button class="button button-balanced button-clear button-block  icon ion-share"></button>
-      </div>
-      <div class="list card">
-          <div class="item item-divider">
-            {{producto.name}}
-          </div>
-          <div class="item item-body">
+    <div class="item item-divider">
+       <h1> {{producto.name}}</h1>
+    </div>
+    <img src="assets/img/product-default-300x300.png" width="100%" height="auto" style="width: 100%; height: auto;">
+    <div >
+        <div>
             <p> {{producto.descripcion}}</p>
-            <p>Price: $</p>
-            <p>hola</p>
-          </div>
-      </div>
-
+            <p>Price: {{ producto.price }} $</p>
+        </div>
+        <ion-list>
+            <ion-item>
+              <ion-label>Cantidad: </ion-label>
+                <ion-select [(ngModel)]="cantidad">
+                  <ion-option value="1">1</ion-option>
+                  <ion-option value="2">2</ion-option>
+                  <ion-option value="3">3</ion-option>
+                  <ion-option value="4">4</ion-option>
+                </ion-select>
+          </ion-item>
+        </ion-list>
+        <button ion-button full icon-left color="cart">
+            Agregar al carrito
+        </button>
+          
+    </div>
 </ion-content>
