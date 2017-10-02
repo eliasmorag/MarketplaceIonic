@@ -19,12 +19,11 @@ export class Login {
     this.facebook.login(['email', 'user_about_me']).then((response:FacebookLoginResponse)=> {
       this.facebook.api('me?fields=id,name,email,picture.width(720).height(720).as(picture_large)',[]).then(profile =>{
         this.userData = {email: profile['email'], picture: profile['picture_large']['data']['url'], username: profile['name']};
-      })
-    });
-    this.navCtrl.setRoot(TabsPage,{
-      mail:this.userData.email,
-      foto:this.userData.picture,
-      nombre:this.userData.username
+      }).then(() => this.navCtrl.setRoot(TabsPage,{
+        mail:this.userData.email,
+        foto:this.userData.picture,
+        nombre:this.userData.username
+      }))
     });
   }
 }
