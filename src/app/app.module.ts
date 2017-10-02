@@ -17,7 +17,9 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
+import firebase from 'firebase';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBTGY08NdYQq6BuT2JgjuYo4QTnAYm8IJ0",
@@ -27,6 +29,15 @@ export const firebaseConfig = {
   storageBucket: "productos-angular.appspot.com",
   messagingSenderId: "837986261668"
   }
+
+firebase.initializeApp ({
+  apiKey: "AIzaSyBTGY08NdYQq6BuT2JgjuYo4QTnAYm8IJ0",
+  authDomain: "productos-angular.firebaseapp.com",
+  databaseURL: "https://productos-angular.firebaseio.com",
+  projectId: "productos-angular",
+  storageBucket: "productos-angular.appspot.com",
+  messagingSenderId: "837986261668"
+  });
 
 
 @NgModule({
@@ -44,7 +55,9 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig)
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
