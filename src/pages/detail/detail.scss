@@ -1,3 +1,32 @@
 page-detail {
 
 }
+
+.product-name {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: normal;
+    font-family: Lato,Arial,sans-serif;
+    font-style: normal;    
+    color: #4286f4;
+  }
+  
+  .product-precio {
+    font-size: 21px;
+    line-height: 21px;    
+    color: #111111;
+    font-family: Lato,Arial,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .product-cantidad {
+    font-family: Lato,Arial,sans-serif;  
+    font-style: normal;    
+    font-weight: normal;    
+    font-size: 12px;
+    line-height: 15px;        
+    color: #b12704;
+  }
