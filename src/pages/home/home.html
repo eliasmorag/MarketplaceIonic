@@ -1,3 +1,5 @@
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+
 <ion-header>
   <ion-navbar color="light-red" >
     <ion-title>
@@ -18,10 +20,15 @@
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
         <ion-col col-6 col-md-4 col-xl-3 *ngFor="let producto of productos">
-          <div class="image-container" [style.background-image]="'url(assets/img/product-default-300x300.png)'" (click)="goDetail(producto)">
-            {{producto.name}}
-            <br>
-            {{producto.descripcion}}
+          <div class="product-box" (click)="goDetail(producto)">
+            <div class="image-container">
+                <img src="{{producto.url}}">            
+            </div>
+            <div class="product-details">
+                <div class="product-name">{{producto.name}}</div>
+                <div class="product-precio">{{producto.precio}}$</div>
+                <div class="product-cantidad">{{producto.cantidad}} en stock</div>              
+            </div>
           </div>
         </ion-col>
       </ion-row>
