@@ -40,4 +40,8 @@ export class Login {
       }))
     });
   }
+
+  bypass(){
+    this.navCtrl.setRoot(TabsPage);
+  }
 }

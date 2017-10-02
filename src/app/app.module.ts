@@ -20,6 +20,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import firebase from 'firebase';
+import { CartProvider } from '../providers/cart/cart';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBTGY08NdYQq6BuT2JgjuYo4QTnAYm8IJ0",
@@ -75,6 +76,7 @@ firebase.initializeApp ({
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
     FirebaseProvider,
+    CartProvider,
   ]
 })
 export class AppModule {}
