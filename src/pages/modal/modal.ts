@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ViewController } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart'
 import { Producto } from '../../app/producto'
+import { ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the ModalPage page.
@@ -18,7 +19,7 @@ import { Producto } from '../../app/producto'
 export class ModalPage {
   producto:Producto;
   cantidad:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider,public toastCtrl: ToastController) {
     this.producto=this.navParams.get('pro');
   }
   closeModal(producto){
@@ -33,6 +34,14 @@ export class ModalPage {
     console.log(producto);
     console.log(this.producto);
     console.log(this.cantidad);
+    let toast = this.toastCtrl.create({
+      message: 'Item agregado al carrito!',
+      duration: 2000,
+      position:'bottom' 
+    });
+
+    toast.present(toast);
+    this.view.dismiss();
   }
 
 }

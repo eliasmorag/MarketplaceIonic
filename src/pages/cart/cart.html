@@ -13,20 +13,37 @@
 </ion-header>
 
 
-<ion-content padding>
-            <ion-list *ngFor="let car of cartList;let i = index">
-                      <h1>{{car.producto.name}}</h1>
-                      <div width="25%" height="25%" style="width: 25%; height: 25%;">            
-                        <img src="{{ car.producto.url}}" width="100%" height="auto" style="width: 100%; height: auto;">
-                      </div>                        
-                      <div>
-                          <div >{{ car.quantity }} x {{car.producto.precio}}$</div>    
-                              
-                      </div>
-
-            </ion-list>
-            <div> Total a pagar: {{ totalPrice }}$</div>     
+<ion-content padding> 
         <div *ngIf="cartList.length == 0">
-            <p class="black-text center">Your cart is empty</p>
-        </div>    
+            <h1>No tenes productos en el carrito</h1>
+            <br><br>
+            <button ion-button full icon-left (click)="goHome()" color="light-red">
+                <ion-icon name="home"></ion-icon>
+                Seguir comprando
+            </button>
+        </div>  
+        <div *ngIf="cartList.length > 0">
+          <div >
+              <p>Total=
+                <strong>{{totalPrice | number }}$ </strong>
+              </p>
+          </div>
+          <button ion-button (click)="checkout()" color="light-red">Check Out</button>
+          
+          <ion-list *ngFor="let item of cartList;let i = index ">
+            <ion-card>
+              <ion-item>
+                <h1>{{item.producto.name}}</h1>
+              </ion-item>
+              <img src="{{item.producto.url}}">
+              <ion-item>
+                  <span item-left>{{item.quantity}} items X {{item.producto.precio}}$ =</span>
+                  <span item-left>({{ item.quantity *  item.producto.precio  }}$)</span>
+                  <button ion-button icon-left clear item-end color="danger" (click)="removeFromCart(i)">
+                    <ion-icon name="trash"></ion-icon>
+                  </button>
+              </ion-item>
+            </ion-card>
+          </ion-list>
+        </div>
 </ion-content>
