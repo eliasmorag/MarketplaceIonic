@@ -19,6 +19,13 @@
         <img [src]="userData.picture">
         <ion-card-content>
           <p>Email: {{userData.email}}</p>
+          <p>Telefono: {{(profileData | async)?.telefono}}</p>
+          <p>Fecha de Nacimiento: {{(profileData | async)?.fechaNacimiento}}</p>
+          <p>Sexo: {{(profileData | async)?.sexo}}</p>
+          <p>Direccion: {{(profileData | async)?.direccion}}</p>
         </ion-card-content>
     </ion-card>
+
+    <button ion-button clear block (click)="editProfile()">Editar</button>    
+
 </ion-content>
