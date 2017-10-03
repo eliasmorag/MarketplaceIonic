@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
+import firebase from 'firebase';
 
 
 @Component({
@@ -29,15 +30,17 @@ export class Login {
     });*/
 
     this.facebook.login(['email', 'user_about_me']).then((response:FacebookLoginResponse)=> {
-      /*let credential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-      firebase.auth().signInWithCredential(credential);*/
+      let credential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
+      firebase.auth().signInWithCredential(credential).then((info) => {
+        alert(JSON.stringify("Bienvenido, "+info.displayName));
+      }).then(() => 
       this.facebook.api('me?fields=id,name,email,picture.width(720).height(720).as(picture_large)',[]).then(profile =>{
         this.userData = {email: profile['email'], picture: profile['picture_large']['data']['url'], username: profile['name']};
       }).then(() => this.navCtrl.setRoot(TabsPage,{
         mail:this.userData.email,
         foto:this.userData.picture,
         nombre:this.userData.username
-      }))
+      })))
     });
   }
 
