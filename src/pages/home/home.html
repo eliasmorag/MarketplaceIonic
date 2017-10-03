@@ -20,7 +20,7 @@
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
         <ion-col col-6 col-md-4 col-xl-3 *ngFor="let producto of productos">
-          <div class="product-box" (click)="goDetail(producto)">
+          <div class="product-box" (click)="openModal(producto)">
             <div width="100%" height="150px" style="width: 100%; height: 150px;">            
               <img src="{{producto.url}}" width="100%" height="auto" style="width: 100%; height: auto;">
             </div>                        

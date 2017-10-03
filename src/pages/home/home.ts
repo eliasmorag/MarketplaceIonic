@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FirebaseProvider} from '../../providers/firebase/firebase'
-import { NavController ,NavParams} from 'ionic-angular';
+import { NavController ,NavParams,ModalController, ModalOptions} from 'ionic-angular';
 import { DetailPage } from '../../pages/detail/detail'
 
 
@@ -14,7 +14,7 @@ export class HomePage {
   galleryType = 'regular';
   producto:any;
 
-  constructor(private firebaseService:FirebaseProvider,public navCtrl: NavController,public navParams: NavParams) {
+  constructor(private modal:ModalController,private firebaseService:FirebaseProvider,public navCtrl: NavController,public navParams: NavParams) {
     this.userData = {email: navParams.get('email'), picture: navParams.get('picture'), username: navParams.get('username')};
     this.firebaseService.getProductos().subscribe(productos => {
       this.productos = productos;
@@ -24,5 +24,13 @@ export class HomePage {
 
   goDetail(producto){
     this.navCtrl.push(DetailPage,{pro:producto});
+  }
+
+  openModal(producto){
+    const myModalOptions: ModalOptions={
+      showBackdrop:true
+    }
+    const myModal=this.modal.create('ModalPage',{pro:producto}, myModalOptions);
+    myModal.present();
   }
 }
