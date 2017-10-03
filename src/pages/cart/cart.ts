@@ -19,7 +19,9 @@ export class CartPage {
   public totalPrice: number;
   constructor(public navCtrl: NavController, public navParams: NavParams,protected cartService: CartProvider) {
     this.loadCart();
+    console.log(this.cartList);
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
@@ -37,9 +39,19 @@ export class CartPage {
 
             }
             this.totalPrice = total;
+            console.log(this.totalPrice);
 
         })
 
 };
+
+doRefresh(refresher) {
+  console.log('Begin async operation', refresher);
+  this.loadCart();
+  setTimeout(() => {
+    console.log('Async operation has ended');
+    refresher.complete();
+  }, 2000);
+}
 
 }

@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
-import firebase from 'firebase';
+
 
 @Component({
   selector: 'page-login',

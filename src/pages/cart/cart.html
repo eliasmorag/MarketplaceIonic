@@ -14,22 +14,19 @@
 
 
 <ion-content padding>
-  <div [ngSwitch]="galleryType">
-    <!-- Responsive Layout with Ion Grid-->
-    <ion-grid *ngSwitchCase="'regular'">
-      <ion-row>
-        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let cart of cartList">
-          <div class="product-box" (click)="goDetail(producto)">
-            <div width="100%" height="150px" style="width: 100%; height: 150px;">            
-              <img src="{{ cart.producto.url}}" width="100%" height="auto" style="width: 100%; height: auto;">
-            </div>                        
-            <div class="product-details">
-                <div class="product-name">{{cart.producto.name}}</div>
-                <div class="product-precio">{{cart.producto.precio}}$</div>             
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+            <ion-list *ngFor="let car of cartList;let i = index">
+                      <h1>{{car.producto.name}}</h1>
+                      <div width="25%" height="25%" style="width: 25%; height: 25%;">            
+                        <img src="{{ car.producto.url}}" width="100%" height="auto" style="width: 100%; height: auto;">
+                      </div>                        
+                      <div>
+                          <div >{{ car.quantity }} x {{car.producto.precio}}$</div>    
+                              
+                      </div>
+
+            </ion-list>
+            <div> Total a pagar: {{ totalPrice }}$</div>     
+        <div *ngIf="cartList.length == 0">
+            <p class="black-text center">Your cart is empty</p>
+        </div>    
 </ion-content>

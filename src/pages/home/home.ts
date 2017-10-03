@@ -19,6 +19,7 @@ export class HomePage {
     this.firebaseService.getProductos().subscribe(productos => {
       this.productos = productos;
     });
+    console.log(this.productos);
   }
 
   goDetail(producto){

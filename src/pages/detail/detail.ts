@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart'
+import { Producto } from '../../app/producto'
 /**
  * Generated class for the DetailPage page.
  *
@@ -14,7 +15,7 @@ import { CartProvider } from '../../providers/cart/cart'
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-  producto:any;
+  producto:Producto;
   cantidad:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, protected cartService:CartProvider) {
     this.producto=this.navParams.get('pro');
@@ -24,8 +25,11 @@ export class DetailPage {
     console.log('ionViewDidLoad DetailPage');
   }
 
-  addToCart(){
+  addToCart(producto){
     this.cartService.addToCart({producto:this.producto,quantity: this.cantidad});
+    console.log(producto);
+    console.log(this.producto);
+    console.log(this.cantidad);
   }
 
 }

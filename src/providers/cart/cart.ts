@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {BehaviorSubject} from "rxjs";
-import {Producto} from "../../app/producto";
 import {Cart} from "../../app/cart";
 /*
   Generated class for the CartProvider provider.
@@ -29,6 +28,7 @@ export class CartProvider {
       let dup = current.find(c=>c.producto.name === cart.producto.name);
       if(dup) dup.quantity += cart.quantity;
       else current.push(cart);
+      console.log(cart);
       this.cartListSubject.next(current);
   };
   reloadCart = (cartList) => {
