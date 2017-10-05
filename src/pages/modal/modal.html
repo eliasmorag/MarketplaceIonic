@@ -40,7 +40,14 @@
   <button ion-button full icon-left color="cart" (click)="addToCart(producto)">
       Agregar al carrito
   </button>
-
+  <ion-item>
+    <div class="product-name"> {{comentario.comentario}}</div>
+    <ion-label>Comentario</ion-label>
+    <ion-input type="text" [(ngModel)]="comentario.comentario" name="comment"></ion-input>
+  </ion-item>
+  <ion-buttons end>
+    <button ion-button (click)="save(producto)">Aceptar</button>
+  </ion-buttons>
 </ion-content>
 
     

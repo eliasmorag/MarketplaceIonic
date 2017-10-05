@@ -3,6 +3,12 @@ import { IonicPage, NavController, NavParams , ViewController } from 'ionic-angu
 import { CartProvider } from '../../providers/cart/cart'
 import { Producto } from '../../app/producto'
 import { ToastController } from 'ionic-angular';
+import {AngularFireDatabase,FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database'
+import {FirebaseProvider} from '../../providers/firebase/firebase'
+import { Comentario } from '../../models/comentario'
+import { HomePage } from '../../pages/home/home'
+import { Profile } from '../../models/profile'
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the ModalPage page.
@@ -18,16 +24,30 @@ import { ToastController } from 'ionic-angular';
 })
 export class ModalPage {
   producto:Producto;
+  productos:any;
   cantidad:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider,public toastCtrl: ToastController) {
+  comentario = {} as Comentario
+  comentarios = null;
+  constructor(public navCtrl: NavController,private firebaseService:FirebaseProvider, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider,public toastCtrl: ToastController, private database:AngularFireDatabase) {
     this.producto=this.navParams.get('pro');
-  }
+    this.firebaseService.getProductos().subscribe(productos => {
+      this.productos = productos;
+    this.firebaseService.getComentarios().subscribe(comentarios => {
+      this.comentarios = comentarios;
+      })
+    })};
+
   closeModal(producto){
     this.view.dismiss(producto);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalPage');
+  }
+  save(producto : Producto,usuario : Profile) {
+    this.database.object(`comentario/${producto.id}`).set(this.comentario)
+     // .then(() => {this.navCtrl.setRoot('HomePage')})
+    console.log(this.comentario);
   }
   addToCart(producto){
     this.cartService.addToCart({producto:this.producto,quantity: this.cantidad});

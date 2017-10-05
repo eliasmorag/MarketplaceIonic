@@ -13,6 +13,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 @Injectable()
 export class FirebaseProvider {
   productos:FirebaseListObservable<any[]>;
+  comentarios:FirebaseListObservable<any[]>;
   producto:FirebaseObjectObservable<any[]>;
   folder:any;
 
@@ -23,6 +24,10 @@ export class FirebaseProvider {
   getProductos(){
     this.productos = this.af.list('/productos/') as FirebaseListObservable<Producto[]>
     return this.productos;
+  }
+  getComentarios(){
+    this.comentarios = this.af.list('/comentario/') as FirebaseListObservable<Producto[]>
+    return this.comentarios;
   }
   getProductoDetails(id){
     this.producto = this.af.object('/productos/'+id) as FirebaseObjectObservable<Producto[]>
@@ -45,4 +50,5 @@ interface Producto{
   dimensiones?:string;
   peso?:string;
   caracteristicas?:string;
+  comentario?:string;
 }

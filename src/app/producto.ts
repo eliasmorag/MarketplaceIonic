@@ -10,4 +10,3 @@ export class Producto {
     dimensiones: string;
     peso: number;
   }
-  
