@@ -45,7 +45,7 @@ export class ModalPage {
     console.log('ionViewDidLoad ModalPage');
   }
   save(producto : Producto,usuario : Profile) {
-    this.database.object(`comentario/${producto.id}`).set(this.comentario)
+    this.database.list(`comentario/${producto.id}`).push(this.comentario)
      // .then(() => {this.navCtrl.setRoot('HomePage')})
     console.log(this.comentario);
   }
