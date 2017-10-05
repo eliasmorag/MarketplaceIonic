@@ -30,12 +30,22 @@
   <ion-input [(ngModel)]="profile.sexo"></ion-input>
 </ion-item>
 
-<ion-item>
-  <ion-label floating>Direccion</ion-label>
-  <ion-input [(ngModel)]="profile.direccion"></ion-input>
-</ion-item>
+<div #map id="map"></div>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-input [(ngModel)]="profile.latitud"></ion-input>        
+    </ion-col>
+    <ion-col>
+      <ion-input [(ngModel)]="profile.longitud"></ion-input>          
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<button ion-button clear block (click)="onLocateUser()">Locate me</button>
+
 
 <button ion-button clear block (click)="createProfile()">Guardar</button>
-<button ion-button clear block (click)="cancelar()">Cancelar</button>
 
 </ion-content>

@@ -22,7 +22,7 @@
           <p>Telefono: {{(profileData | async)?.telefono}}</p>
           <p>Fecha de Nacimiento: {{(profileData | async)?.fechaNacimiento}}</p>
           <p>Sexo: {{(profileData | async)?.sexo}}</p>
-          <p>Direccion: {{(profileData | async)?.direccion}}</p>
+          <p>Direccion: {{(profileData | async)?.latitud}},{{(profileData | async)?.longitud}}</p>
         </ion-card-content>
     </ion-card>
 
