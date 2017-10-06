@@ -66,7 +66,31 @@ export class EditProfilePage {
 
     const map = new google.maps.Map(this.mapRef.nativeElement,options);
 
-    this.addMarker(location, map);
+    //this.addMarker(location, map);
+    var marker = new google.maps.Marker({
+      position: {lat,lng},
+      map: map,
+      title: 'Mi direccion',
+      draggable:true,
+      animation: google.maps.Animation.DROP,      
+    });
+
+    marker.addListener('click', toggleBounce);
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
+    marker.addListener('dragend', function(e) {
+      map.setCenter(marker.getPosition());
+      document.getElementById('profile.latitud').innerHTML=e.latLng.lat();
+      document.getElementById('profile.longitud').innerHTML=e.latLng.lng();
+    });
+
+    
   }
 
   onLocateUser(){
