@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { Comentario } from '../../models/comentario'
 
 /*
   Generated class for the FirebaseProvider provider.
@@ -23,10 +23,15 @@ export class FirebaseProvider {
   }
   getProductos(){
     this.productos = this.af.list('/productos/') as FirebaseListObservable<Producto[]>
+    console.log(this.productos)
+    console.log("arriba prod")
     return this.productos;
+    
   }
   getComentarios(){
-    this.comentarios = this.af.list('/comentario/') as FirebaseListObservable<Producto[]>
+    this.comentarios = this.af.list('/comentario/') as FirebaseListObservable<Comentario[]>
+    console.log(this.comentarios)
+    console.log("holaaaa")
     return this.comentarios;
   }
   getProductoDetails(id){
