@@ -23,12 +23,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'modal.html',
 })
 export class ModalPage {
+  mostrarComentarios=false;  
   producto:Producto;
   productos:any;
   cantidad:any;
   comentario = {} as Comentario
   comentarios: FirebaseListObservable<any[]>
   constructor(public navCtrl: NavController,private firebaseService:FirebaseProvider, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider,public toastCtrl: ToastController, private database:AngularFireDatabase) {
+    this.comentario.usuario=navParams.get('username'); 
     this.producto=this.navParams.get('pro');
     this.firebaseService.getProductos().subscribe(productos => {
       this.productos = productos;
@@ -40,12 +42,19 @@ export class ModalPage {
     this.view.dismiss(producto);
   }
 
+  verComentarios(){
+    this.mostrarComentarios=true;
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalPage');
     this.comentarios=this.database.list(`comentario/${this.producto.id}`)
   }
   save(producto : Producto,usuario : Profile) {
+    const currentDate = (new Date()).toString();
+    this.comentario.fecha=currentDate;
     this.database.list(`comentario/${producto.id}`).push(this.comentario)
+    this.comentario.comentario="";
      // .then(() => {this.navCtrl.setRoot('HomePage')})
     console.log(this.comentario);
   }

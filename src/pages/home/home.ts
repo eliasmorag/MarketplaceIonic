@@ -27,10 +27,11 @@ export class HomePage {
   }
 
   openModal(producto){
+    
     const myModalOptions: ModalOptions={
       showBackdrop:true
     }
-    const myModal=this.modal.create('ModalPage',{pro:producto}, myModalOptions);
+    const myModal=this.modal.create('ModalPage',{pro:producto, username:this.userData.username}, myModalOptions);
     myModal.present();
   }
 }
