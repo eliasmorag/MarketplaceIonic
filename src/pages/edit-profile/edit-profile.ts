@@ -1,19 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
 import { TabsPage } from '../tabs/tabs';
 import { Geolocation } from '@ionic-native/geolocation';
-
-
-
-/**
- * Generated class for the EditProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 declare var google:any;
 
@@ -25,6 +16,7 @@ declare var google:any;
 export class EditProfilePage {
 
   @ViewChild('map') mapRef:ElementRef;
+  datosFireBase:FirebaseObjectObservable<Profile>;
   profile = {} as Profile;
   userData:any=null; //los datos de Facebook  
   userLocation:any;
@@ -33,7 +25,8 @@ export class EditProfilePage {
 
   constructor(private afAuth:AngularFireAuth, private afDatabase: AngularFireDatabase, private geolocation: Geolocation,
     public navCtrl: NavController, public navParams: NavParams) {
-      this.userData = {email: navParams.get('mail'), picture: navParams.get('foto'), username: navParams.get('nombre')};      
+      this.userData = {email: navParams.get('mail'), picture: navParams.get('foto'), username: navParams.get('nombre')};
+      this.datosFireBase = navParams.get('datosFireBase'); 
   }
 
   createProfile(){
@@ -48,7 +41,16 @@ export class EditProfilePage {
   }  
 
   ionViewDidLoad() {
-    this.showMap(-25.336348, -57.521995);
+    this.datosFireBase.subscribe(datos => {
+      this.profile = datos;
+    });
+    if (this.profile.latitud && this.profile.longitud){
+      this.showMap(this.profile.latitud,this.profile.longitud);
+    } 
+    else{
+      this.showMap(-25.336348, -57.521995);
+    }
+    
   }
 
   showMap(lat, lng){
