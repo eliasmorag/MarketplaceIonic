@@ -21,6 +21,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import firebase from 'firebase';
 import { CartProvider } from '../providers/cart/cart';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBTGY08NdYQq6BuT2JgjuYo4QTnAYm8IJ0",
@@ -77,6 +79,7 @@ firebase.initializeApp ({
     Facebook,
     FirebaseProvider,
     CartProvider,
+    Geolocation,
   ]
 })
 export class AppModule {}

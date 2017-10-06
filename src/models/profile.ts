@@ -2,5 +2,6 @@ export interface Profile {
     telefono:string;
     fechaNacimiento:string;
     sexo:string;
-    direccion:string
+    latitud:any;    
+    longitud:any;
 }

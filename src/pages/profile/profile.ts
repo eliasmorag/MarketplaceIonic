@@ -31,7 +31,8 @@ export class ProfilePage {
     this.navCtrl.push('EditProfilePage',{
       mail:this.userData.email,
       foto:this.userData.picture,
-      nombre:this.userData.username
+      nombre:this.userData.username,
+      datosFireBase:this.profileData
     });
   }
 
