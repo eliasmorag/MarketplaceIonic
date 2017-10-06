@@ -54,7 +54,7 @@ export class Login {
       message: 'Bienvenido ' + name,
       showCloseButton: true,
       closeButtonText: 'Ok',
-      position: 'middle'
+      position: 'botton'
     });
     toast.present();
   }
