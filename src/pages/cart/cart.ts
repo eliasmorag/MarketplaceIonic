@@ -20,7 +20,11 @@ export class CartPage {
   public totalPrice: number;
   public totalQuantity: number;
   public tab1Root = HomePage;
+  userData = null;
+  
+
   constructor(public navCtrl: NavController, public navParams: NavParams,protected cartService: CartProvider) {
+    this.userData = {email: navParams.get('email'), picture: navParams.get('picture'), username: navParams.get('username')};
     this.loadCart();
     console.log(this.cartList);
   }
