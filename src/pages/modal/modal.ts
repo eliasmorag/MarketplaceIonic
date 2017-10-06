@@ -3,12 +3,11 @@ import { IonicPage, NavController, NavParams , ViewController } from 'ionic-angu
 import { CartProvider } from '../../providers/cart/cart'
 import { Producto } from '../../app/producto'
 import { ToastController } from 'ionic-angular';
-import {AngularFireDatabase,FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database'
+import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database'
 import {FirebaseProvider} from '../../providers/firebase/firebase'
 import { Comentario } from '../../models/comentario'
-import { HomePage } from '../../pages/home/home'
 import { Profile } from '../../models/profile'
-import { AngularFireAuth } from 'angularfire2/auth';
+import { DatePipe } from '@angular/common';
 
 /**
  * Generated class for the ModalPage page.
@@ -52,7 +51,8 @@ export class ModalPage {
   }
   save(producto : Producto,usuario : Profile) {
     const currentDate = (new Date()).toString();
-    this.comentario.fecha=currentDate;
+    const today: number = Date.now();
+    this.comentario.fecha=today;
     this.database.list(`comentario/${producto.id}`).push(this.comentario)
     this.comentario.comentario="";
      // .then(() => {this.navCtrl.setRoot('HomePage')})

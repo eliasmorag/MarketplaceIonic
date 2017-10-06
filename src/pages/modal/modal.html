@@ -49,11 +49,9 @@
     <ion-list list-md-margin-top=16px list-md-margin-bottom=16px list-md-header-font-size=1.4rem>
       <ion-label toolbar-md-title-font-size><h3>Comentarios de Usuarios</h3></ion-label>
       <ion-item *ngFor="let comentario of comentarios | async" class="product-comment">
-        
-      
           <div class="panel panel-default">
             <div class="panel-heading">
-              <strong>{{comentario.usuario}}</strong> <span class="text-muted">{{comentario.fecha}}</span>
+              <strong>{{comentario.usuario}}       </strong><span text-color="este-es">   -  {{comentario.fecha  | date:'medium'}}</span>
             </div>
             <div class="panel-body">
               {{comentario.comentario}}

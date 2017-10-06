@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart'
 import { Producto } from '../../app/producto'
 import { ToastController } from 'ionic-angular';
+
 /**
  * Generated class for the DetailPage page.
  *
