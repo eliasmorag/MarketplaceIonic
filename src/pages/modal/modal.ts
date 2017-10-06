@@ -25,7 +25,7 @@ export class ModalPage {
   mostrarComentarios=false;  
   producto:Producto;
   productos:any;
-  cantidad:any;
+  cantidad=1;
   comentario = {} as Comentario
   comentarios: FirebaseListObservable<any[]>
   constructor(public navCtrl: NavController,private firebaseService:FirebaseProvider, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider,public toastCtrl: ToastController, private database:AngularFireDatabase) {
@@ -71,6 +71,7 @@ export class ModalPage {
 
     toast.present(toast);
     this.view.dismiss();
+    this.cantidad=1;
   }
 
 }
