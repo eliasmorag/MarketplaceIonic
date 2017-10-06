@@ -27,22 +27,22 @@ export class ModalPage {
   productos:any;
   cantidad:any;
   comentario = {} as Comentario
-  comentarios = null;
+  comentarios: FirebaseListObservable<any[]>
   constructor(public navCtrl: NavController,private firebaseService:FirebaseProvider, public navParams: NavParams, private view:ViewController, protected cartService:CartProvider,public toastCtrl: ToastController, private database:AngularFireDatabase) {
     this.producto=this.navParams.get('pro');
     this.firebaseService.getProductos().subscribe(productos => {
       this.productos = productos;
-    this.firebaseService.getComentarios().subscribe(comentarios => {
-      this.comentarios = comentarios;
-      })
-    })};
-
+    //this.firebaseService.getComentarios().subscribe(comentarios => {
+    //  this.comentarios = comentarios;
+     // })
+    })};    
   closeModal(producto){
     this.view.dismiss(producto);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalPage');
+    this.comentarios=this.database.list(`comentario/${this.producto.id}`)
   }
   save(producto : Producto,usuario : Profile) {
     this.database.list(`comentario/${producto.id}`).push(this.comentario)

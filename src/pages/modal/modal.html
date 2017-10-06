@@ -24,7 +24,6 @@
           <div class="product-name"> {{producto.descripcion}}</div>
           <div class="product-precio">{{producto.precio}}$</div>
         </div>
-
     </div>
     <ion-list>
       <ion-item>
@@ -40,14 +39,16 @@
   <button ion-button full icon-left color="cart" (click)="addToCart(producto)">
       Agregar al carrito
   </button>
+  <ion-list list-md-margin-top=16px list-md-margin-bottom=16px list-md-header-font-size=1.4rem>
+    <ion-label toolbar-md-title-font-size><h3>Comentarios de Usuarios</h3></ion-label>
+    <ion-item *ngFor="let comentario of comentarios | async" class="product-comment">
+        {{comentario.comentario}}
+    </ion-item>
+  </ion-list>
   <ion-item>
-    <div class="product-name"> {{comentario.comentario}}</div>
-    <ion-label>Comentario</ion-label>
-    <ion-input type="text" [(ngModel)]="comentario.comentario" name="comment"></ion-input>
+    <ion-input type="text" [(ngModel)]="comentario.comentario" name="comment" placeholder="Escribe tu comentario"></ion-input>
+    <button ion-button item-end (click)="save(producto)">Aceptar</button>
   </ion-item>
-  <ion-buttons end>
-    <button ion-button (click)="save(producto)">Aceptar</button>
-  </ion-buttons>
 </ion-content>
 
     
