@@ -34,6 +34,9 @@ export class FirebaseProvider {
     console.log("holaaaa")
     return this.comentarios;
   }
+  deleteComentario(idProducto,idComentario){
+    this.af.object('/comentario/'+idProducto+"/"+idComentario).remove();
+  }
   getProductoDetails(id){
     this.producto = this.af.object('/productos/'+id) as FirebaseObjectObservable<Producto[]>
     return this.producto;

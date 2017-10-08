@@ -60,6 +60,9 @@ export class ModalPage {
      // .then(() => {this.navCtrl.setRoot('HomePage')})
     console.log(this.comentario);
   }
+  delete(producto,comentario): void {
+    this.firebaseService.deleteComentario(producto.id,comentario.$key);    
+  }
   addToCart(producto){
     this.cartService.addToCart({producto:this.producto,quantity: this.cantidad});
     console.log(producto);

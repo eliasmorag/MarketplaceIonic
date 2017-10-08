@@ -57,7 +57,7 @@
             <ion-card-content>
                 <p>{{comentario.comentario}}</p>    
                 <ion-item *ngIf="comentario.usuario == usuario">                    
-                  <button ion-button icon-left clear item-end color="danger">
+                  <button ion-button icon-left clear item-end color="danger" (click)="delete(producto,comentario)">
                     <ion-icon name="trash"></ion-icon>
                   </button>
                 </ion-item>
