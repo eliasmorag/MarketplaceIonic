@@ -7,7 +7,6 @@ import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database'
 import {FirebaseProvider} from '../../providers/firebase/firebase'
 import { Comentario } from '../../models/comentario'
 import { Profile } from '../../models/profile'
-import { DatePipe } from '@angular/common';
 
 /**
  * Generated class for the ModalPage page.
@@ -52,7 +51,6 @@ export class ModalPage {
     this.comentarios=this.database.list(`comentario/${this.producto.id}`)
   }
   save(producto : Producto,usuario : Profile) {
-    const currentDate = (new Date()).toString();
     const today: number = Date.now();
     this.comentario.fecha=today;
     this.database.list(`comentario/${producto.id}`).push(this.comentario)

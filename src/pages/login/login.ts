@@ -13,22 +13,16 @@ import { ToastController } from 'ionic-angular';
 export class Login {
   userData = null;
   homePage = HomePage;
+  splash=true;
   constructor(private facebook:Facebook,public navCtrl:NavController, public toastCtrl: ToastController) {
 
   }
 
+  ionViewDidLoad() {
+    setTimeout(() => this.splash = false, 4000);
+  }
+
   loginWithFB(){
-
-    /*let provider =  new firebase.auth.FacebookAuthProvider();
-
-    firebase.auth().signInWithRedirect(provider).then(()=> {
-      firebase.auth().getRedirectResult().then((result)=>{
-        alert(JSON.stringify(result));
-      }).catch(function(error){
-        alert(JSON.stringify(error))
-      });
-    });*/
-
     this.facebook.login(['email', 'user_about_me']).then((response:FacebookLoginResponse)=> {
       let credential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
       firebase.auth().signInWithCredential(credential).then((info) => {
