@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
-import { TabsPage } from '../tabs/tabs';
 import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google:any;
