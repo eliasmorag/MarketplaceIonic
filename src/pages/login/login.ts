@@ -26,7 +26,7 @@ export class Login {
     this.facebook.login(['email', 'user_about_me']).then((response:FacebookLoginResponse)=> {
       let credential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
       firebase.auth().signInWithCredential(credential).then((info) => {
-        this.showToastWithCloseButton(info.displayName);
+        this.showToast(info.displayName);
       }).then(() => 
       this.facebook.api('me?fields=id,name,email,picture.width(720).height(720).as(picture_large)',[]).then(profile =>{
         this.userData = {email: profile['email'], picture: profile['picture_large']['data']['url'], username: profile['name']};
@@ -43,12 +43,11 @@ export class Login {
     this.navCtrl.setRoot(TabsPage);
   }
 
-  showToastWithCloseButton(name) {
+  showToast(name) {
     const toast = this.toastCtrl.create({
       message: 'Bienvenido ' + name,
-      showCloseButton: true,
-      closeButtonText: 'Ok',
-      position: 'botton'
+      position: 'bottom',
+      duration: 1000
     });
     toast.present();
   }

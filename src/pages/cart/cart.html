@@ -1,9 +1,3 @@
-<!--
-  Generated template for the CartPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="light-red">
@@ -17,36 +11,45 @@
 
 
 <ion-content padding> 
-        <div *ngIf="cartList.length == 0">
-            <h1>No tenes productos en el carrito</h1>
-            <br><br>
-            <button ion-button full icon-left (click)="goHome()" color="light-red">
-                <ion-icon name="home"></ion-icon>
-                Seguir comprando
-            </button>
-        </div>  
-        <div *ngIf="cartList.length > 0">
-          <div >
-              <p>Total=
-                <strong>{{totalPrice | number }}$ </strong>
-              </p>
-          </div>
-          <button ion-button (click)="checkout()" color="light-red">Check Out</button>
-          
-          <ion-list *ngFor="let item of cartList;let i = index ">
-            <ion-card>
-              <ion-item>
-                <h1>{{item.producto.name}}</h1>
-              </ion-item>
-              <img src="{{item.producto.url}}">
-              <ion-item>
-                  <span item-left>{{item.quantity}} items X {{item.producto.precio}}$ =</span>
-                  <span item-left>({{ item.quantity *  item.producto.precio  }}$)</span>
-                  <button ion-button icon-left clear item-end color="danger" (click)="removeFromCart(i)">
-                    <ion-icon name="trash"></ion-icon>
-                  </button>
-              </ion-item>
-            </ion-card>
-          </ion-list>
-        </div>
+  <div *ngIf="cartList.length == 0">
+    <p>No hay productos</p>
+    
+    <button ion-button full icon-left (click)="goHome()" color="light-red">
+      <ion-icon name="home"></ion-icon>
+    </button>
+
+  </div>  
+
+  <div *ngIf="cartList.length > 0">
+    <div style="border:1px solid gray;">
+        <p><strong>TOTAL: {{totalPrice | number }}$ </strong></p>
+        <button ion-button full (click)="checkout()" color="light-red">Check Out</button>        
+    </div>
+    <div>
+      <ion-list *ngFor="let item of cartList;let i = index ">
+        <ion-card>
+          <ion-card-header><strong>ID: {{item.producto.id}}</strong></ion-card-header>
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <img src="{{item.producto.url}}" style="max-height:100px;width:auto;padding-left:20px;">                          
+                </ion-col>
+                <ion-col>
+                    <ion-card-content>
+                        <p style="text-transform: uppercase;"><strong>{{item.producto.name}}</strong></p>
+                        <p>{{item.producto.descripcion}}</p>
+                        <ion-item>
+                          <p item-left>{{item.quantity}} X {{item.producto.precio}}$ = {{ item.quantity *  item.producto.precio  }}$</p>
+                          <button ion-button icon-left clear item-end color="danger" (click)="removeFromCart(i)">
+                              <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </ion-item>
+                    </ion-card-content>  
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

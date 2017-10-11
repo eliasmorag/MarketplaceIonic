@@ -68,7 +68,7 @@ export class ModalPage {
     console.log(this.cantidad);
     let toast = this.toastCtrl.create({
       message: 'Item agregado al carrito!',
-      duration: 2000,
+      duration: 1000,
       position:'bottom' 
     });
 
